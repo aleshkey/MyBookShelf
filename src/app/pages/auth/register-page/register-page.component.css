@@ -1,0 +1,11 @@
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form-container {
+    width: calc(100% - 1000px);
+    height: calc(100% - 60px);
+}

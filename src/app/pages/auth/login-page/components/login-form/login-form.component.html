@@ -1,0 +1,44 @@
+<div class="container">
+    <img src="assets/logo_2.png" alt="test" width="150" class="logo">
+    <div class="title">
+        <span class="text-regular main-text">Welcome Back!</span>
+        <span class="text-regular secondary-text">Sign in to continue to yourDigital Library</span>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
+        <div class="controller">
+            <label class="text-semi-bold">
+                Email:
+            </label>
+            <input class="text-regular" formControlName="email" />
+            <app-error-message-controller
+                [show]="!!(registerForm.get('email')?.invalid && registerForm.get('email')?.touched)"
+                message="Email is incorrect."
+            ></app-error-message-controller>
+        </div>
+
+        <div class="controller">
+            <label class="text-semi-bold">
+                Password:
+            </label>
+            <input class="text-regular" formControlName="password" type="password"/>
+            <app-error-message-controller
+                [show]="!!(registerForm.get('password')?.invalid && registerForm.get('password')?.touched)"
+                message="Password length must be greater then 8."
+            ></app-error-message-controller>
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid" class="button-submit">Register</button>
+
+        <div class="social-login">
+            <button class="google-btn text-semi-bold" (click)="signInWithGoogle()">
+                <img src="assets/google_logo.png" alt="Google logo" width="20" style="vertical-align: middle; margin-right: 8px;">
+                Sign in with Google
+            </button>
+        </div>
+
+        <div class="help">
+            <p>New User? <a href="/register">Register Here </a></p>
+        </div>
+    </form>
+
+</div>
