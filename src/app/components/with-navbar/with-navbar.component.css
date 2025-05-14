@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 38px;
+    height: 99%;
+    box-sizing: border-box;
+}
+
+.navbar {
+    flex: 1;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius:  10px;
+}
+
+.content {
+    flex: 5;
+    background-color: var(--primary-color-background);
+    border-bottom-right-radius:  10px;
+    border-top-right-radius:  10px;
+}

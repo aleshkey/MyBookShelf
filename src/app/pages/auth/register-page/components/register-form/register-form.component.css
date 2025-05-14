@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #FFFFFF;         /* или любой другой фон */
+    background: var(--secondary-color-background);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 63px 71px 87px 71px;
@@ -24,12 +24,12 @@
 }
 
 .main-text {
-    font-size: 20px;
+    font-size: 2rem;
 }
 
 .secondary-text {
-    font-size: 15px;
-    color: #ABABAB;
+    font-size: 1.5rem;
+    color: var(--secondary-text-color);
 }
 
 .controller {
@@ -48,21 +48,21 @@ input {
     padding: 16px;
     width: 100%;
     height: 56px;
-    background: #FFFFFF;
+    background: var(--secondary-color-background);
     border: 1px solid #DCD9D9;
     border-radius: 8px;
     flex: none;
     order: 1;
     align-self: stretch;
     flex-grow: 0;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 button {
     width:  100%;
     height: 48px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 
 .button-submit {

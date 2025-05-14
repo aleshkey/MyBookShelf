@@ -1,4 +1,6 @@
 export interface IUserModel {
-    email: string,
-    username: string
+    uid: string;
+    email: string;
+    displayName: string;
+    emailVerified: boolean;
 }

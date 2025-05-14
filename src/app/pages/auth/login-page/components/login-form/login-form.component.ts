@@ -1,21 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../../../../service/auth.service";
-import {Router} from "@angular/router";
-import {passwordMatchValidator} from "../../../../../utils/validators/password-match-validator";
-import {StorageModel} from "../../../../../service/storage";
-import {
-    ErrorMessageControllerComponent
-} from "../../../../../components/error-message-controller/error-message-controller.component";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {AuthService} from '@app/service/auth/auth.service';
+import {Router} from '@angular/router';
+import {ErrorMessageControllerComponent} from '@app/components/error-message-controller/error-message-controller.component';
 
 @Component({
-  selector: 'app-login-form',
+    selector: 'app-login-form',
     imports: [
         ErrorMessageControllerComponent,
         ReactiveFormsModule
     ],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+    templateUrl: './login-form.component.html',
+    styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent implements OnInit {
     registerForm!: FormGroup;
@@ -23,7 +19,8 @@ export class LoginFormComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.registerForm = new FormGroup({
@@ -37,14 +34,23 @@ export class LoginFormComponent implements OnInit {
             return;
         }
 
-        const { email, password } = this.registerForm.value;
+        const {email, password} = this.registerForm.value;
         this.authService.login(email, password)
-            .subscribe(() => { console.log('Login Successful.') });
+            .then(() => {
+                console.log('1');
+                this.router.navigateByUrl('/dashboard')
+                    .then(success => console.log('Navigation success:', success))
+                    .catch(err => console.error('Navigation error:', err));
+                console.log('Login Successful.');
+            });
 
     }
 
     signInWithGoogle() {
         this.authService.loginWithGoogle()
-            .subscribe( () => { console.log("success") });
+            .subscribe(() => {
+                this.router.navigateByUrl('/navbar');
+                console.log('success');
+            });
     }
 }

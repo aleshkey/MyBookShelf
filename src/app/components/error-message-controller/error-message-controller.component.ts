@@ -1,11 +1,11 @@
-import {Component, input, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 
 
 @Component({
-  selector: 'app-error-message-controller',
+    selector: 'app-error-message-controller',
     imports: [],
-  templateUrl: './error-message-controller.component.html',
-  styleUrl: './error-message-controller.component.css'
+    templateUrl: './error-message-controller.component.html',
+    styleUrl: './error-message-controller.component.css'
 })
 export class ErrorMessageControllerComponent {
     message = input<string>('');

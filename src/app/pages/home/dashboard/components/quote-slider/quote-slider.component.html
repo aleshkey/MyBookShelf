@@ -1,0 +1,23 @@
+<div class="slider-wrapper">
+  <h3>Today's Quote</h3>
+  <div class="slider-track" [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'">
+    @for (quote of quotes; track quote) {
+      <div class="slide">
+        <blockquote>“{{ quote.text }}”</blockquote>
+        <footer>-{{ quote.author }}</footer>
+      </div>
+    }
+  </div>
+  <div class="dots">
+    @for (_ of quotes; track _; let i = $index) {
+      <span
+        class="dot"
+        [class.active]="i === currentIndex"
+        tabindex="0"
+        (click)="goToSlide(i)"
+        (keydown.enter)="goToSlide(i)"
+        (keydown.space)="goToSlide(i)"
+      ></span>
+    }
+  </div>
+</div>

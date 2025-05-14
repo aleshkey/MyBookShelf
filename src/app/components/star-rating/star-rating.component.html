@@ -1,0 +1,11 @@
+<div class="star-rating">
+    @for (star of stars; let i = $count; track star) {
+    <span
+      class="star"
+      [ngClass]="{'filled': i < rating()}"
+      (click)="setRating(i + 1)"
+      >
+      ★
+    </span>
+  }
+</div>

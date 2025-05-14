@@ -6,7 +6,7 @@
     </div>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container">
         <div class="controller">
-            <label class="text-semi-bold">
+            <label for="email" class="text-semi-bold">
                 Email:
             </label>
             <input class="text-regular" formControlName="email" />
@@ -17,7 +17,7 @@
         </div>
 
         <div class="controller">
-            <label class="text-semi-bold">
+            <label for="password" class="text-semi-bold">
                 Password:
             </label>
             <input class="text-regular" formControlName="password" type="password"/>

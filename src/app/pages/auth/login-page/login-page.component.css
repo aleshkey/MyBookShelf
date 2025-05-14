@@ -3,9 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+
 }
 
 .form-container {
-    width: calc(100% - 1000px);
+    max-width: 500px;
+    width: calc(100% - 500px);
     height: calc(100% - 60px);
 }

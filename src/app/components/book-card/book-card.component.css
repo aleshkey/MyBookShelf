@@ -1,0 +1,52 @@
+.card-container {
+    width: 160px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px 15px 15px;
+    background: var(--secondary-color-background);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.img-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.title,
+.authors span {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+img {
+    width: auto;
+    height: 170px;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.author span{
+    font-size: 1rem;
+}
+
+.rating {
+    font-size: 1rem;
+}
+
+
+.text-info {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+

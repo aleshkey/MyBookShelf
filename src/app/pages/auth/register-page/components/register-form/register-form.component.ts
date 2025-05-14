@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ErrorMessageControllerComponent} from "../../../../../components/error-message-controller/error-message-controller.component";
-import {passwordMatchValidator} from "../../../../../utils/validators/password-match-validator";
-import {AuthService} from "../../../../../service/auth.service";
-import {Router} from "@angular/router";
-import {StorageModel} from "../../../../../service/storage";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+    ErrorMessageControllerComponent
+} from '@app/components/error-message-controller/error-message-controller.component';
+import {passwordMatchValidator} from '@app/utils/validators/password-match-validator';
+import {AuthService} from '@app/service/auth/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-register-form',
@@ -22,7 +23,8 @@ export class RegisterFormComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-    ) {}
+    ) {
+    }
 
     ngOnInit() {
         this.registerForm = new FormGroup({
@@ -30,7 +32,7 @@ export class RegisterFormComponent implements OnInit {
             email: new FormControl('', [Validators.required, Validators.email]),
             password: new FormControl('', [Validators.required, Validators.minLength(8)]),
             confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
-        }, { validators: passwordMatchValidator('password', 'confirmPassword') });
+        }, {validators: passwordMatchValidator('password', 'confirmPassword')});
     }
 
     onSubmit() {
@@ -38,24 +40,18 @@ export class RegisterFormComponent implements OnInit {
             return;
         }
 
-        const { email, name: username, password } = this.registerForm.value;
+        const {email, name: username, password} = this.registerForm.value;
 
         this.authService.register(email, username, password)
-            .subscribe( {
-                next: () => {
-                    this.router.navigate(['/'])
-                        .then(r => {
-                            console.log(StorageModel.instance.array);
-                        });
-                },
-                error: err => {
-                    console.log(err);
-                }
+            .then(() => {
+                this.router.navigateByUrl('/login');
             });
     }
 
     signInWithGoogle() {
         this.authService.loginWithGoogle()
-            .subscribe( () => { console.log("success") });
+            .subscribe(() => {
+                this.router.navigateByUrl('/navbar');
+            });
     }
 }

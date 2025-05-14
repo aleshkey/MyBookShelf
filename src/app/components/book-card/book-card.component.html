@@ -1,0 +1,15 @@
+<div
+    class="card-container"
+    [routerLink]="'/books/' + book()?.id"
+>
+    <div class="img-container">
+        <img src="{{book()?.volumeInfo?.imageLinks?.smallThumbnail}}" alt="{{book()?.volumeInfo?.description}}">
+    </div>
+    <div class="text-medium text-info">
+        <span class="title">{{book()?.volumeInfo?.title}}</span>
+        <div class="authors">
+            <span>{{book()?.volumeInfo?.authors || "unknown"}}</span>
+        </div>
+        <span class="rating">{{book()?.volumeInfo?.averageRating || 0}}/5</span>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<cdk-virtual-scroll-viewport itemSize="220" class="book-list-viewport">
+    <div class="book-list-container">
+        @for (book of books(); track book.id) {
+            <app-book-card [book]="book"></app-book-card>
+        }
+    </div>
+</cdk-virtual-scroll-viewport>
+
+@if (!books() || books().length === 0) {
+    <p>No books found.</p>
+}
