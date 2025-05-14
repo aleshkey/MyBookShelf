@@ -1,0 +1,20 @@
+.star-rating {
+    display: flex;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 2.4rem;
+    color: var(--primary-rating-star-color);
+    user-select: none;
+}
+
+.star {
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: var(--secondary-rating-star-color);
+}
+
+.star:not(.filled) {
+    color: var(--primay-hover-background);
+}

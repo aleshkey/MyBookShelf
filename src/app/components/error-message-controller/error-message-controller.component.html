@@ -1,0 +1,13 @@
+@if (show() && message()) {
+  <div class="error-message">
+    <svg class="error-icon" viewBox="0 0 24 24">
+      <path
+            d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 15a1.25
+         1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm0-4a.75.75 0 0
+         1-.75-.75V7.25a.75.75 0 0 1 1.5 0v4A.75.75 0 0 1 12 13z"
+        fill="currentColor"
+        />
+      </svg>
+      <span>{{ message() }}</span>
+    </div>
+  }

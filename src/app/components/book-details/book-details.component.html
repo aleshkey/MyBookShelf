@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="back-button">
+        <span>Back to results</span>
+    </div>
+    <div class="card-info-container">
+        <div class="img-info">
+            <img src="{{this.book?.volumeInfo?.imageLinks?.smallThumbnail}}" alt="">
+            <div class="img-button">
+                <img src="assets/book-details/review.png" alt="">
+                <span>Review</span>
+            </div>
+            <div class="img-button">
+                <img src="assets/book-details/notes.png" alt="">
+                <span>Notes</span>
+            </div>
+            <div class="img-button">
+                <img src="assets/book-details/share.png" alt="">
+                <span>Share</span>
+            </div>
+
+        </div>
+        <div class="book-info">
+            <h2>{{book?.volumeInfo?.title}}</h2>
+            <span>By {{book?.volumeInfo?.authors}}</span>
+            <span>Version: {{book?.volumeInfo?.contentVersion}}</span>
+
+            <app-star-rating
+                [rating]="book?.volumeInfo?.averageRating || 0"
+                (ratingChange)="onRatingChange($event)"
+            ></app-star-rating>
+        </div>
+        <div class="author-info">
+
+        </div>
+    </div>
+</div>

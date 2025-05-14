@@ -1,0 +1,13 @@
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+.form-container {
+    max-width: 500px;
+    width: calc(100% - 500px);
+    height: calc(100% - 60px);
+}

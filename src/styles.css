@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body, app-root {
+    margin: 0;
+    padding: 0;
+    width:  100%;
+    height: 100%;
+
+    font-size: 12px;
+
+    background-image: url('assets/wave.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+:root {
+    --navbar-active-text-color: #4D4D4D;
+    --navbar-inactive-text-color: #8A8A8A;
+    --navbar-background-color: #FFFFFF;
+
+    --primary-color-light: #FA7C54;
+    --primary-color-dark: #4D4D4D;
+    --secondary-color-error: #EB5231;
+    --secondary-color-blue: #571FCF;
+    --secondary-color-success: #42BB4E;
+    --primary-color-background: #F3F3F7;
+    --secondary-color-background: #FFFFFF;
+    --primay-hover-background: #f0f0f0;
+    --primary-rating-star-color: #ffd700;
+    --secondary-rating-star-color: #ffc107;
+    --secondary-text-color: #ABABAB;
+}
+
+.text-light {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.text-regular {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.text-medium {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.text-semi-bold {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.text-bold {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 700;
+}

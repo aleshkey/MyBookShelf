@@ -1,0 +1,25 @@
+<div class="dropdown" [class.dropdown--open]="isOpen">
+  <div class="dropdown__header" (click)="toggleDropdown()">
+    <img class="dropdown__img"
+      [src]="config()?.imgSrc"
+      [alt]="config()?.title"/>
+
+      <div class="dropdown__title">{{ getDisplayedValue() }}</div>
+
+      <span class="dropdown__arrow" [class.dropdown__arrow--rotated]="isOpen">▼</span>
+    </div>
+
+    @if (isOpen) {
+      <ul class="dropdown__options">
+        @for (opt of config()?.options; track opt) {
+          <li
+            class="dropdown__option"
+            (click)="selectOption(opt)"
+            [class.dropdown__option--selected]="selected === opt.value"
+            >
+            {{ opt.label }}
+          </li>
+        }
+      </ul>
+    }
+  </div>
