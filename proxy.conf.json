@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://quoteapi.pythonanywhere.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": { "^/api": "" }
+  }
+}

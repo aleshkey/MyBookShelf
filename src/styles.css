@@ -30,6 +30,12 @@ html, body, app-root {
     --primary-rating-star-color: #ffd700;
     --secondary-rating-star-color: #ffc107;
     --secondary-text-color: #ABABAB;
+
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --border-color: #DCD9D9;
+
+    --like-color: #e63946;
+    --like-border-color:;
 }
 
 .text-light {

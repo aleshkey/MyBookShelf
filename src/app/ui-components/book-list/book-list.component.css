@@ -1,0 +1,18 @@
+.book-list-viewport {
+    height: 17.5rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    scrollbar-width: none;
+}
+
+.book-list-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.book-list-container {
+    display: flex;
+    gap: 2.125rem;
+    flex-direction: row;
+}

@@ -1,0 +1,42 @@
+.container {
+    padding-top: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.125rem;
+    align-items: center;
+    height: 100%;
+    border-bottom-left-radius: 0.625rem;
+    border-top-left-radius: 0.625rem;
+    background-color: var(--navbar-background-color);
+}
+
+span {
+    display: flex;
+    gap: 0.75rem;
+    color: var(--navbar-inactive-text-color);
+    font-size: 2rem;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    gap: 2.125rem;
+    justify-items: start;
+}
+
+.icon {
+    height: 1.25rem;
+    width: auto;
+}
+
+.logo {
+    margin-bottom: 6.25rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem;
+    margin-top: auto;
+    margin-bottom: 3.125rem;
+}

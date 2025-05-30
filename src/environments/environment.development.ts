@@ -9,4 +9,11 @@ export const environment = {
         appId: import.meta.env.NG_APP_FIREBASE_APP_ID as string,
         measurementId: import.meta.env.NG_APP_FIREBASE_MEASUREMENT_ID as string,
     },
+
+    elservier: {
+        baseURL: import.meta.env.NG_APP_ELSEVIER_BASE_URL,
+        apiKey: import.meta.env.NG_APP_ELSEVIER_API_KEY as string
+    },
+    google: import.meta.env.NG_APP_GOOGLE_API_KEY as string,
+    baseUrl: import.meta.env.NG_APP_GOOGLE_BOOKS_API_BASE_URL as string
 };

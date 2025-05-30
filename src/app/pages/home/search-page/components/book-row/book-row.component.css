@@ -1,0 +1,39 @@
+.button-container {
+    display: flex;
+    gap: 0.625rem;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.heart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.heart-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: #ccc;
+    transition: fill 0.2s ease;
+}
+
+.heart-btn.active .heart-icon {
+    fill: var(--like-color);
+}
+
+.preview-btn {
+    border: 1px solid var(--like-color);
+    color: var(--like-color);
+    background: none;
+    padding: 0.3125rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.preview-btn:hover {
+    background: #ffeaea;
+}

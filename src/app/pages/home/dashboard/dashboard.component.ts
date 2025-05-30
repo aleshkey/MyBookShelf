@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {QuoteSliderComponent} from '@app/pages/home/dashboard/components/quote-slider/quote-slider.component';
-import {BookListComponent} from '@app/components/book-list/book-list.component';
-import {BookService} from '@app/service/rest/book/book.service';
-import {IBookModel} from '@app/model/ibook.model';
-import {Store} from '@ngrx/store';
-import {selectBooks} from '@app/utils/actions/books.selectors';
+import {BookListComponent} from '@app/ui-components/book-list/book-list.component';
+import {BookService} from '@core/api/book/book.service';
+import {IBookModel} from '@core/models/ibook.model';
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {BookFacade} from "@core/store/facade/book/book-facade.service";
+import {catchError, of, tap} from "rxjs";
 
 @Component({
     selector: 'app-dashboard',
@@ -19,32 +20,40 @@ export class DashboardComponent implements OnInit {
 
     books: IBookModel[] = [];
     recentBooks: IBookModel[] = [];
+    destroyRef = inject(DestroyRef);
+
 
     constructor(
         private bookService: BookService,
-        private store: Store
-    ) {}
+        private bookFacade: BookFacade
+    ) {
+    }
 
     ngOnInit(): void {
-        this.store.select(selectBooks)
-            .subscribe({
-                next: (books) => {
-                    this.recentBooks = books;
-                },
-                error: (error) => {
-                    console.error('Error fetching books:', error);
-                },
-            });
+        this.bookFacade.getRecentBooks()
+            .pipe(
+                takeUntilDestroyed(this.destroyRef),
+                tap((books) => this.recentBooks = books),
+                catchError((error) => {
+                    console.error('Error fetching recent books:', error);
+                    return of([]);
+                })
+            )
+            .subscribe();
+
         this.bookService.getRecommended()
-            .subscribe({
-                next: (response) => {
+            .pipe(
+                takeUntilDestroyed(this.destroyRef),
+                tap((response) => {
                     console.log('Dashboard received books:', response);
                     this.books = response.items;
-                },
-                error: (error) => {
-                    console.error('Error fetching books:', error);
-                },
-            });
+                }),
+                catchError((error) => {
+                    console.error('Error fetching recommended books:', error);
+                    return of({ items: [] });
+                })
+            )
+            .subscribe();
     }
 
 }
