@@ -9,6 +9,10 @@ declare interface Env {
     readonly NG_APP_FIREBASE_MESSAGING_SENDER_ID: string;
     readonly NG_APP_FIREBASE_APP_ID: string;
     readonly NG_APP_FIREBASE_MEASUREMENT_ID: string;
+    readonly NG_APP_ELSEVIER_API_KEY: string;
+    readonly NG_APP_ELSEVIER_BASE_URL: string;
+    readonly NG_APP_GOOGLE_API_KEY: string;
+    readonly NG_APP_GOOGLE_BOOKS_API_BASE_URL: string;
 }
 
 // Choose how to access the environment variables.

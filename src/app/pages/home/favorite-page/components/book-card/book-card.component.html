@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="img-wrapper">
+        <img src="{{book()?.volumeInfo?.imageLinks?.smallThumbnail}}"/>
+        <div class="book-info">
+            <span class="title">{{book()?.volumeInfo?.title}}</span>
+            @for (author of book()?.volumeInfo?.authors; track author) {
+                <span class="author">{{author}}</span>
+            }
+        </div>
+        <div class="rating-wrapper">
+            <span class="rating-value">{{book()?.volumeInfo?.averageRating}}</span><span class="rating-max">/5</span>
+        </div>
+    </div>
+    <div class="request-info">
+        <span class="info-label">Borrowed on</span>
+        <span class="date"></span>
+        <span class="info-label">Submission Due</span>
+        <span class="date"></span>
+        <button class="read-button">Read</button>
+    </div>
+</div>

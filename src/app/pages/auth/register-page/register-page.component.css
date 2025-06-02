@@ -6,6 +6,6 @@
 }
 
 .form-container {
-    width: calc(100% - 1000px);
-    height: calc(100% - 60px);
+    width: calc(100% - 62.5rem);
+    height: calc(100% - 3.75rem);
 }

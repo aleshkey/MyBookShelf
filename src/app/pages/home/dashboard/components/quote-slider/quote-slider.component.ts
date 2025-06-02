@@ -1,25 +1,40 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnDestroy, OnInit} from '@angular/core';
+import {IQuote} from '@core/models/iquote.model';
+import {QuoteService} from "@core/api/quote/quote.service";
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {interval, Subject, takeUntil, tap} from "rxjs";
 
 
 @Component({
     selector: 'app-quote-slider',
     templateUrl: './quote-slider.component.html',
     imports: [],
-    styleUrls: ['./quote-slider.component.css']
+    styleUrls: ['./quote-slider.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteSliderComponent implements OnInit, OnDestroy {
-    quotes = [
-        { text: 'There is more treasure in books than in all the pirate’s loot on Treasure Island.', author: 'Walt Disney' },
-        { text: 'The only thing you absolutely have to know is the location of the library.', author: 'Albert Einstein' },
-        { text: 'A reader lives a thousand lives before he dies.', author: 'George R.R. Martin' },
-        { text: 'Books are a uniquely portable magic.', author: 'Stephen King' }
-    ];
 
+    quotes!: IQuote[];
     currentIndex = 0;
     intervalId?: ReturnType<typeof setInterval>;
+    private destroy$ = new Subject<void>();
+    private destroyRef = inject(DestroyRef);
+
+    constructor(
+        private quoteService: QuoteService
+    ) {
+    }
 
     ngOnInit(): void {
-        this.startAutoSlide();
+        this.quoteService.getRandomQuotes()
+            .pipe(
+                takeUntilDestroyed(this.destroyRef),
+                tap((quotes) => {
+                    this.quotes = quotes;
+                    this.startAutoSlide();
+                })
+            )
+            .subscribe();
     }
 
     ngOnDestroy(): void {
@@ -27,9 +42,11 @@ export class QuoteSliderComponent implements OnInit, OnDestroy {
     }
 
     startAutoSlide(): void {
-        this.intervalId = setInterval(() => {
-            this.currentIndex = (this.currentIndex + 1) % this.quotes.length;
-        }, 5000);
+        interval(5000)
+            .pipe(takeUntil(this.destroy$))
+            .subscribe(() => {
+                this.currentIndex = (this.currentIndex + 1) % this.quotes.length;
+            });
     }
 
     goToSlide(index: number): void {

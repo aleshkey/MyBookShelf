@@ -1,8 +1,8 @@
 .slider-wrapper {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(140.88deg, #EB5231 -29.15%, #571FCF 151.64%);
     color: white;
-    padding: 24px;
-    border-radius: 10px;
+    padding: 1.5rem;
+    border-radius: 0.625rem;
     width: 100%;
     max-width: 60%;
     font-family: sans-serif;
@@ -19,7 +19,7 @@
 .slide {
     width: 100%;
     flex-shrink: 0;
-    padding-right: 10px;
+    padding-right: 0.625rem;
     box-sizing: border-box;
 }
 
@@ -27,7 +27,6 @@ blockquote {
     font-size: 1.2rem;
     max-width: 80%;
     margin: 1rem 0;
-
     hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
@@ -42,13 +41,13 @@ footer {
 
 .dots {
     display: flex;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 0.5rem;
+    margin-top: 1rem;
 }
 
 .dots span {
-    width: 10px;
-    height: 10px;
+    width: 0.625rem;
+    height: 0.625rem;
     background-color: white;
     opacity: 0.5;
     border-radius: 50%;
@@ -62,12 +61,12 @@ footer {
 
 .dot {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 0.625rem;
+    height: 0.625rem;
     background-color: white;
     opacity: 0.5;
     border-radius: 50%;
     cursor: pointer;
     transition: 0.3s;
-    margin-right: 8px;
+    margin-right: 0.5rem;
 }

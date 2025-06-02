@@ -33,6 +33,7 @@
     "@angular/cli": "^19.2.9",
     "@angular/compiler-cli": "^19.2.0",
     "@ngx-env/builder": "^19.0.4",
+    "@types/google.maps": "^3.58.1",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "19.3.0",
     "eslint": "^9.23.0",

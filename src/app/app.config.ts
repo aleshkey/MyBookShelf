@@ -7,7 +7,7 @@ import {getAuth, provideAuth} from '@angular/fire/auth';
 import {environment} from '@env/environment';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
 import {provideHttpClient} from '@angular/common/http';
-import { booksReducer } from './utils/actions/books.reducer';
+import { booksReducer } from '@core/store/reducers/books.reducer';
 import {provideStore} from '@ngrx/store';
 
 

@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
     ErrorMessageControllerComponent
-} from '@app/components/error-message-controller/error-message-controller.component';
-import {passwordMatchValidator} from '@app/utils/validators/password-match-validator';
-import {AuthService} from '@app/service/auth/auth.service';
+} from '@app/ui-components/error-message-controller/error-message-controller.component';
+import {passwordMatchValidator} from '@core/validators/password-match-validator';
+import {AuthService} from '@core/api/auth/auth.service';
 import {Router} from '@angular/router';
+import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 
 @Component({
     selector: 'app-register-form',
@@ -14,11 +15,13 @@ import {Router} from '@angular/router';
         ErrorMessageControllerComponent
     ],
     templateUrl: './register-form.component.html',
-    styleUrl: './register-form.component.css'
+    styleUrl: './register-form.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterFormComponent implements OnInit {
 
     registerForm!: FormGroup;
+    private destroyRef = inject(DestroyRef);
 
     constructor(
         private authService: AuthService,
@@ -50,8 +53,9 @@ export class RegisterFormComponent implements OnInit {
 
     signInWithGoogle() {
         this.authService.loginWithGoogle()
+            .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
-                this.router.navigateByUrl('/navbar');
+                this.router.navigateByUrl('/dashboard');
             });
     }
 }
